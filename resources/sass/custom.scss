@@ -1,0 +1,43 @@
+/**
+*
+* Bootstrap Classes Overrides
+*
+*/
+
+// Tables inside cards
+.card > .table th {
+  border-top: 0;
+}
+.card > .table {
+  margin-bottom: 0;
+}
+
+/**
+*
+* Custom Classes
+*
+*/
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.nomargin {
+  margin: 0 !important;
+}
+
+/**
+*
+* Normal Overrides
+*
+*/
+
+pre {
+  margin: 0 !important;
+  white-space: pre-wrap;
+}
+
+.custom-badge {
+  font-size: smaller !important;
+  font-weight: normal !important;
+}
