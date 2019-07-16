@@ -53,8 +53,7 @@ const app = new Vue({
     el: '#app',
     data: {
       processes: [],
-      processesFilter: 'all',
-      testBool: true
+      processesFilter: 'all'
     },
     methods: {
       create (data) {
@@ -108,7 +107,7 @@ const app = new Vue({
       },
       delete (id) {
         axios.delete(`/api/processes/${id}`).then((response) => {
-          this.processes = this.processes.filter(process => process.id != response.data)
+            this.processes = this.processes.filter(process => process.id != response.data.id)
         })
       },
       numToStatus (num) {

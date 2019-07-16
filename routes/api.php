@@ -14,7 +14,4 @@ use Illuminate\Http\Request;
 */
 
 /* RESTful routes for processes API */
-Route::resource('/processes','ProcessController');
-
-/* RESTful routes for API Keys */
-Route::resource('/keys','KeyController');
+Route::resource('/processes','ProcessController', ['except' => ['create', 'show', 'edit']]);

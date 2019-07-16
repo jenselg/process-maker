@@ -45603,8 +45603,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   data: {
     processes: [],
-    processesFilter: 'all',
-    testBool: true
+    processesFilter: 'all'
   },
   methods: {
     create: function create(data) {
@@ -45689,7 +45688,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
       axios__WEBPACK_IMPORTED_MODULE_2___default.a["delete"]("/api/processes/".concat(id)).then(function (response) {
         _this4.processes = _this4.processes.filter(function (process) {
-          return process.id != response.data;
+          return process.id != response.data.id;
         });
       });
     },

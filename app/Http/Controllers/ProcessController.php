@@ -15,17 +15,11 @@ class ProcessController extends Controller
      */
     public function index()
     {
-      return Process::all();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-      //
+      if (Process::all()) {
+        return response(Process::all(), 200);
+      } else {
+        return response("Invalid API Call!", 400);
+      }
     }
 
     /**
@@ -42,30 +36,11 @@ class ProcessController extends Controller
       $process->description = trim($request->input('description'));
       $process->code = trim($request->input('code'));
       $process->status = $request->input('status');
-      $process->save();
-      return $process;
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Process  $process
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Process $process)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Process  $process
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Process $process)
-    {
-        //
+      if($process->save()) {
+        return response($process, 201);
+      } else {
+        return response("Invalid API Call!", 400);
+      }
     }
 
     /**
@@ -82,8 +57,11 @@ class ProcessController extends Controller
       $process->description = trim($request->input('description'));
       $process->code = trim($request->input('code'));
       $process->status = $request->input('status');
-      $process->save();
-      return $process;
+      if ($process->save()) {
+        return response($process, 201);
+      } else {
+        return response("Invalid API Call!", 400);
+      }
     }
 
     /**
@@ -95,7 +73,11 @@ class ProcessController extends Controller
     public function destroy($id)
     {
       $process = Process::findOrFail($id);
-      $process->delete();
-      return $id;
+      if ($process->delete()) {
+        return response($process, 200);
+      } else {
+        return response("Invalid API Call!", 400);
+      }
     }
+
 }
